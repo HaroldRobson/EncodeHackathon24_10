@@ -1,0 +1,11 @@
+export const MUSIC_NFT_ADDRESS = "0x7422e5ed784705497a9b5EF8C4FebEc689083Ed7";
+export const USDC_ADDRESS = "0x41e94eb019c0762f9bfcf9fb1e58725bfb0e7582";
+export const PINATA_JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiI4Mzk0YjI2MC0zZDQyLTRlNDUtODdlOS02OTk5OTMzODEwYmMiLCJlbWFpbCI6Ind0MjMxODhAYnJpc3RvbC5hYy51ayIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxLCJpZCI6IkZSQTEifSx7ImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxLCJpZCI6Ik5ZQzEifV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiIxZWQ1NTQ3NWMxYTZjNTRlOWJkZCIsInNjb3BlZEtleVNlY3JldCI6IjhlNmU2MjhhOWNlZDUwNDU1ZDlkNWQ4YzAwZjhmODlhOTQ3ZmYxOWRkYzlkOGViZDJjNTY2ZGJiNzlmMWE0MDQiLCJleHAiOjE3OTI5NDEyNjN9.6cuBJDPGJ3RMV4lL_mO_cAypfrceh8Zd6jKil4pHCvg"; // You'll need to provide the full JWT token
+export const CHAIN_ID = 80002; // Polygon Amoy testnet
+
+// ERC20 ABI for USDC approve function
+export const ERC20_ABI = [
+  "function approve(address spender, uint256 amount) public returns (bool)",
+  "function allowance(address owner, address spender) public view returns (uint256)",
+  "function balanceOf(address account) public view returns (uint256)"
+];
