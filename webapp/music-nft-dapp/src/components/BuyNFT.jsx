@@ -55,36 +55,51 @@ function BuyNFT({ signer, account }) {
     }
   };
 
-  const handleBuy = async (tokenId, price) => {
-    try {
-      setBuying(tokenId);
-      const musicContract = getMusicNFTContract(signer);
-      const usdcContract = getUSDCContract(signer);
-      
-      // Convert price to USDC amount (6 decimals)
-      const priceInUSDC = formatUSDC(price);
-      
-      // Step 1: Approve USDC spending
-      console.log('Approving USDC...');
-      const approveTx = await usdcContract.approve(musicContract.address, priceInUSDC);
-      await approveTx.wait();
-      
-      // Step 2: Buy the NFT
-      console.log('Buying NFT...');
-      const buyTx = await musicContract.buy(tokenId);
-      await buyTx.wait();
-      
-      alert('[ SUCCESS! NFT PURCHASED! ]');
-      
-      // Reload the list
-      loadNFTsForSale();
-    } catch (error) {
-      console.error('Buy error:', error);
-      alert('[ ERROR: ' + error.message + ' ]');
-    } finally {
-      setBuying(null);
-    }
-  };
+const handleBuy = async (tokenId, price) => {
+  try {
+    setBuying(tokenId);
+    const musicContract = getMusicNFTContract(signer);
+    const usdcContract = getUSDCContract(signer);
+    
+    // Convert price to USDC amount (6 decimals)
+    const priceInUSDC = formatUSDC(price);
+    
+    console.log('Token ID:', tokenId);
+    console.log('Price:', price, 'USDC');
+    console.log('Price in wei:', priceInUSDC.toString());
+    
+    // Check current approval
+    const currentAllowance = await usdcContract.allowance(account, musicContract.address);
+    console.log('Current allowance:', currentAllowance.toString());
+    
+    // Step 1: Approve USDC spending
+    console.log('Approving USDC...');
+    const approveTx = await usdcContract.approve(musicContract.address, priceInUSDC);
+    await approveTx.wait();
+    console.log('Approval confirmed!');
+    
+    // Check approval was successful
+    const newAllowance = await usdcContract.allowance(account, musicContract.address);
+    console.log('New allowance:', newAllowance.toString());
+    
+    // Step 2: Buy the NFT
+    console.log('Buying NFT...');
+    const buyTx = await musicContract.buy(tokenId);
+    await buyTx.wait();
+    
+    alert('[ SUCCESS! NFT PURCHASED! ]');
+    
+    // Reload the list
+    loadNFTsForSale();
+  } catch (error) {
+    console.error('Buy error:', error);
+    console.error('Error data:', error.data);
+    console.error('Error reason:', error.reason);
+    alert('[ ERROR: ' + (error.reason || error.message) + ' ]');
+  } finally {
+    setBuying(null);
+  }
+};
 
   if (loading) {
     return <div className="loading">[ LOADING NFTs... ]</div>;
