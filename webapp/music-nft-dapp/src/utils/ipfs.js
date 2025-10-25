@@ -42,10 +42,11 @@ export const uploadJSONToIPFS = async (json) => {
 };
 
 // Fetch from IPFS (converts ipfs:// to https gateway)
+
 export const fetchFromIPFS = async (ipfsUri) => {
   try {
     const hash = ipfsUri.replace('ipfs://', '');
-    const gatewayUrl = `https://gateway.pinata.cloud/ipfs/${hash}`;
+    const gatewayUrl = `https://crimson-rational-sawfish-896.mypinata.cloud/ipfs/${hash}`;
     const response = await axios.get(gatewayUrl);
     return response.data;
   } catch (error) {
@@ -53,10 +54,9 @@ export const fetchFromIPFS = async (ipfsUri) => {
     throw error;
   }
 };
-
 // Convert IPFS URI to HTTP gateway URL for displaying
 export const ipfsToHttp = (ipfsUri) => {
   if (!ipfsUri) return '';
   const hash = ipfsUri.replace('ipfs://', '');
-  return `https://gateway.pinata.cloud/ipfs/${hash}`;
+  return `https://crimson-rational-sawfish-896.mypinata.cloud/ipfs/${hash}`;
 };
