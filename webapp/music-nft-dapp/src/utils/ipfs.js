@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { PINATA_JWT } from '../config';
 
-const PINATA_API_URL = 'https://api.pinata.cloud/pinning/pinFileToIPFS';
-const PINATA_JSON_URL = 'https://api.pinata.cloud/pinning/pinJSONToIPFS';
+const PINATA_API_URL = '';
+const PINATA_JSON_URL = '';
 
 // Upload a file to IPFS via Pinata
 export const uploadFileToIPFS = async (file) => {
