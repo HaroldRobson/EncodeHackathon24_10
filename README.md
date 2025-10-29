@@ -39,5 +39,6 @@ you have these basic functions in NFT_Minter.sol which is the only file:
  # ABI
  - this is what web3.js will need to know how to call our smartcontract functions.
  - MusicNFT.json contained here
+I wrote the smartcontracts and then got Claude.AI to write some tests, we then "vibecoded" the DApp. https://baroquenftmusic.co.uk
 
 
